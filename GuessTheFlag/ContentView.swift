@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct MyModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .clipShape(Capsule())
+            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+            .shadow(color: .black, radius: 10)
+    }
+}
+
+extension View {
+    func modificate() -> some View {
+        self.modifier(MyModifier())
+    }
+}
+
 struct ContentView: View {
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
@@ -32,6 +47,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
+                        
                     
                     
                 }
@@ -42,9 +58,7 @@ struct ContentView: View {
                     }, label: {
                         Image(self.countries[number])
                             .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-                            .shadow(color: .black, radius: 10)
+                            .modificate()
                     })
                     
                 }
