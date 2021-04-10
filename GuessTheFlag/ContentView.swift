@@ -71,16 +71,7 @@ struct ContentView: View {
                 Alert(title: Text("Oh... no"), message: Text("This is flag of \(incorectAnsert )"), dismissButton: .default(Text("Continue")){
                 })
             })
-            
-//            .alert(isPresented: $showingScore, content: {
-//                Alert(title: Text(scoreTitle),
-//                      message: Text("Your score is \(score)"),
-//                      dismissButton: .default(Text("Continue"), action: {
-//                        self.askQuestion()
-//                      }))
-//            })
-            
-         
+                    
          
         }
     }
